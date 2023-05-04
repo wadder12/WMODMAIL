@@ -47,11 +47,11 @@ All notable changes to this project will be documented in this file.
 - initial release
 
 <!-- Links -->
-[keep a changelog]: https://keepachangelog.com/en/1.0.0/
+[keep a changelog]: https://github.com/wadder12/WMODMAIL/blob/master/changelog.md
 
 <!-- Versions -->
 [0.0.1]: https://github.com/Author/Repository/releases/tag/v0.0.1
-
+[0.0.2]: https://github.com/wadder12/WMODMAIL/commits/v0.0.2
 
 
 ## [0.0.2] - 2023-05-03

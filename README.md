@@ -7,7 +7,7 @@
 
 Wadder Projects' version of the popular 'ModMail' concept is designed to be user-friendly and easy to set up. With our bot, you don't need to worry about any complicated setup or configuration process. All you need to do is create the bot and add it to your server, and it will start working right away. Our bot is built on the simple Python library Nextcord, making it accessible to anyone with even the most basic knowledge of Discord bots. Enjoy the convenience of hassle-free modmail management with Wadder Projects' version of ModMail!
 
-![](header.png)
+![](/images/waddermodmail.png)
 
 ## Installation
 
@@ -37,11 +37,11 @@ Andrew Wade – [@WadderBot](https://twitter.com/WadderBot) – wadderprojects@g
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+[https://github.com/wadder12/WMODMAIL](https://github.com/wadder12/)
 
 ## Contributing
 
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
+1. Fork it (<https://github.com/wadder12/WMODMAIL/pulls>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
