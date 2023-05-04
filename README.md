@@ -1,10 +1,10 @@
 # Wadder ModMail
 > This is Wadder Projects' version of the popular 'ModMail' concept. Inspired by the original project, I created my own version that's accessible to anyone with basic knowledge of Discord bot and powered by the simple Python library Nextcord. My goal was to make modmail more approachable and user-friendly for everyone, while retaining its original purpose. I hope you enjoy using it! 
 
-[![NPM Version][npm-image]][npm-url]
-[![PyPI version][pypi-image]][pypi-url]
+
+
 [![PyPI downloads][pypi-downloads]][pypi-url]
-[![Build Status][travis-image]][travis-url]
+
 [![GitHub issues][github-issues]][wiki]
 
 
