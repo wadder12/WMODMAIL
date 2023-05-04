@@ -7,8 +7,14 @@ import os
 import re
 
 
-mails_channel_name = "wmodmail"
-transcripts_folder = "transcripts"
+
+## Todo: Add more functionality to the modmail bot
+## ! setupmodail command is to setup an actual channel (not separate from the bot)
+
+
+
+mails_channel_name = "wmodmail" # change this to the name of the channel you want to use for modmail using for the setup
+transcripts_folder = "transcripts" # I would leave this alone unless you know what you are doing
 
 
 class ModMail(commands.Cog):
@@ -102,6 +108,9 @@ class ModMail(commands.Cog):
             user_id = message.author.id
             if user_id not in self.conversations:
                 self.conversations[user_id] = []
+                
+            # Save attachments if there are any
+            attachment_urls = [attachment.url for attachment in message.attachments]
 
             self.conversations[user_id].append((message.author, message.content))
 
@@ -135,8 +144,9 @@ class ModMail(commands.Cog):
                 embed_to.add_field(name='**Message**', value=f"```{message.content}```", inline=False)
                 embed_to.add_field(name='**Roles**', value=member_roles, inline=False)
                 embed_to.add_field(name='**Joined Server**', value=member.joined_at.strftime('%Y-%m-%d %H:%M:%S') if member else "N/A", inline=False)
-
                 embed_to.add_field(name='**Account Created**', value=message.author.created_at.strftime('%Y-%m-%d %H:%M:%S'), inline=False)
+                if attachment_urls:
+                    embed_to.add_field(name='**Attachments**', value="\n".join(attachment_urls), inline=False)
                 embed_to.set_footer(text="Type your response here", icon_url=self.bot.user.avatar.url)
                 embed_to.set_thumbnail(url=message.author.avatar.url)
 
@@ -178,6 +188,12 @@ class ModMail(commands.Cog):
 
             if message.author.guild_permissions.administrator:
                 try:
+                    # Save attachments if there are any
+                    attachment_urls = [attachment.url for attachment in message.attachments]
+
+                    # Create a list of File objects for sending attachments
+                    files_to_send = [await attachment.to_file() for attachment in message.attachments]
+
                     # send reply to user
                     embed_reply = nextcord.Embed(
                         title='🔔 Reply from Moderator',
@@ -185,8 +201,11 @@ class ModMail(commands.Cog):
                         color=nextcord.Color.blue(),
                         timestamp=message.created_at
                     )
+                    if attachment_urls:
+                        embed_reply.add_field(name='**Attachments**', value="\n".join(attachment_urls), inline=False)
+
                     embed_reply.set_footer(text=f"Sent by {message.author}", icon_url=message.author.avatar.url)
-                    await user.send(embed=embed_reply)
+                    await user.send(embed=embed_reply, files=files_to_send)  # Send the File objects in the 'files' parameter
 
                     # send confirmation to moderator
                     embed_confirm = nextcord.Embed(
