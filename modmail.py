@@ -11,8 +11,6 @@ load_dotenv()
 ending_note = "For additional assistance, contact a moderator."
 color = 0x00FF00
 
-
-
 # the bots intents #
 intents = nextcord.Intents.all()
 intents.guild_messages = True
@@ -36,8 +34,29 @@ async def on_message(message):
     # Process the message as usual
     await bot.process_commands(message)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # this is the start of the modmail bot #
 if __name__ == '__main__':
-    bot.load_extension('cogs.waddermodmail') 
+    bot.load_extension('cogs.waddermodmail')
+    bot.load_extension('cogs.waddernodirect')
+    bot.load_extension('cogs.WadderCogLoader') 
     bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
 
