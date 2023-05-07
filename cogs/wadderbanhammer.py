@@ -86,14 +86,26 @@ class BanHammer(commands.Cog):
             if banned:
                 await message.channel.send(f"{message.author.name} has been temporarily banned for 3 days due to inappropriate messages.")
             else:
-                warning_message = f"{message.author.name}, this is a warning. You have sent an inappropriate message. "\
-                                  f"You have {self.warns[str(message.author.id)]} out of 5 warnings. "\
-                                  f"Reaching 5 warnings will result in a temporary ban for 3 days."
-                await message.channel.send(warning_message)
+                warning_embed = nextcord.Embed(title="Warning", color=nextcord.Color.red())
+                warning_embed.add_field(name="User", value=message.author.mention)
+                warning_embed.add_field(name="Message", value=message.content, inline=False)
+                warning_embed.add_field(name="Warnings", value=f"{self.warns[str(message.author.id)]}/5")
+                warning_embed.set_footer(text="Reaching 5 warnings will result in a temporary ban for 3 days.")
+                await message.channel.send(embed=warning_embed)
                 try:
-                    await message.author.send(warning_message)
+                    await message.author.send(warning_embed)
                 except nextcord.errors.Forbidden:
                     pass
+                
+                # Log the removed message to a channel
+                log_channel_id = 1086313113130909793 # Replace with the ID of the channel to log to
+                log_channel = message.guild.get_channel(log_channel_id)
+                if log_channel is not None:
+                    embed = nextcord.Embed(title="Removed Message", color=nextcord.Color.red())
+                    embed.add_field(name="Author", value=message.author.mention)
+                    embed.add_field(name="Channel", value=message.channel.mention)
+                    embed.add_field(name="Message", value=message.content, inline=False)
+                    await log_channel.send(embed=embed)
 
 
 def setup(bot):
