@@ -88,7 +88,6 @@ class BanHammer(commands.Cog):
             else:
                 warning_embed = nextcord.Embed(title="Warning", color=nextcord.Color.red())
                 warning_embed.add_field(name="User", value=message.author.mention)
-                warning_embed.add_field(name="Message", value=message.content, inline=False)
                 warning_embed.add_field(name="Warnings", value=f"{self.warns[str(message.author.id)]}/5")
                 warning_embed.set_footer(text="Reaching 5 warnings will result in a temporary ban for 3 days.")
                 await message.channel.send(embed=warning_embed)
