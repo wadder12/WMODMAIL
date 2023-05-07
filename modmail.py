@@ -38,25 +38,11 @@ async def on_message(message):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # this is the start of the modmail bot #
 if __name__ == '__main__':
     bot.load_extension('cogs.waddermodmail')
     bot.load_extension('cogs.waddernodirect')
     bot.load_extension('cogs.WadderCogLoader') 
+    bot.load_extension('cogs.wadderbanhammer')
     bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
 
