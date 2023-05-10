@@ -135,3 +135,6 @@ class BanHammer(commands.Cog):
 def setup(bot):
     bot.add_cog(BanHammer(bot))
     print("BanHammer Ready!")
+    
+    
+# using this is awesosme
